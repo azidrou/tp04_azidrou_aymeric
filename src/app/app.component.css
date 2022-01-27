@@ -1,0 +1,20 @@
+#conteneur {
+    display:flex;
+    justify-content: flex-start;
+    width: fit-content;
+}
+app-catalogue{
+   padding: 10% 10%;
+}
+app-saisie-client{
+    padding: 10% 10%;
+ }
+.sep{ 
+
+    border:         none;
+    border-left:    1px solid hsla(10, 10%, 50%,50);
+    border-right:   none;
+    width:          0px;
+}
+
+p{font-size: 2em;}

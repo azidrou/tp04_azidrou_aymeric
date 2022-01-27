@@ -1,0 +1,7 @@
+[
+    { "libelle": "linux", "prix": 10 },
+    { "libelle": "windows", "prix": 11 },
+    { "libelle": "mac", "prix": 666 },
+    { "libelle": "android", "prix": 7 }
+  ]
+  

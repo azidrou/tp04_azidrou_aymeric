@@ -1,0 +1,18 @@
+
+<p class="p1">saisie-client works!</p>
+
+<p>
+    Nom =
+     {{name}} <br>
+     <input [(ngModel)]="name" />
+
+    <button (click)="onClick()"
+    [disabled]="isValid()">
+    Envoyer</button><br>
+
+    
+</p>
+<app-adresse [name] = "name"></app-adresse>
+<!-- <app-adresse *nglf="name == 'toto'" [name] = "name"></app-adresse> -->
+
+

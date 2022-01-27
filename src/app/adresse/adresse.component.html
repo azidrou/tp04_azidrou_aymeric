@@ -1,0 +1,85 @@
+<p>adresse works!</p>
+<body>
+    <h1>Formulaire d'inscription</h1>
+
+    <form (ngSubmit)="submitForm()" [formGroup]="profileForme" >
+        <div class="form-group"> 
+            <label for="firstName">Prénom</label>
+            <input type="text" formControlName="firstName" name="firstName"  placeholder="François" autofocus required />
+        </div>
+
+        <div class="form-group">
+            <label for="name">Nom</label>
+            <input type="text" formControlName="name" name="name" placeholder="Dupond" required />
+        </div>
+
+        <div class="form-group">
+            <label for="adress">Adresse</label>
+            <input type="text" formControlName="adress" name="adress" placeholder="25 rue principale" required />
+        </div>
+
+        <div class="form-group">
+            <label for="cp">Code postal</label>
+            <input type="text" formControlName="cp" name="cp" placeholder="68000" pattern="[0-9]{5}" appVerificationFormulaire required />
+
+        </div>
+
+        <div class="form-group">
+            <label for="city">Ville</label>
+            <input type="text" formControlName="city" name="city" placeholder="Colmar" required />
+        </div>
+
+        <div class="form-group">
+            <label for="country">Pays</label>
+            <input type="text" formControlName="country" name="country" placeholder="France" required />
+        </div>
+
+        <div class="form-group">
+            <label for="phone">Téléphone</label>
+            <input type="phone" formControlName="phone" name="phone" placeholder="06XXXXXXXX" pattern="[0-9]{10}" appVerificationFormulaire />
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" formControlName="email" name="email" placeholder="name@example.com" appVerificationFormulaire required />
+        </div>
+
+        <div class="form-group">
+            <label for="civility">Civilité</label>
+            <input type="text" formControlName="civility" name="civility" placeholder="MR,MME,..." required />
+        </div>
+
+        <div class="form-group">
+            <label for="login">Login</label>
+            <input type="text" formControlName="login" name="login" placeholder="troglo"  required />
+        </div>
+
+        <div class="form-group">
+            <label for="password">Mot de passe</label>
+            <input type="password" formControlName="password" name="password" placeholder="Mot de passe" required />
+        </div>
+
+        <!-- <div class="form-group">
+            <label for="confirmpassword">Mot de passe</label>
+            <input type="confirmpassword" id="confirmpassword" name="confirmpassword" placeholder="Confirmez le mot de passe" required />
+        </div> -->
+
+        <button type="submit" class="btn btn-primary">Valider</button>
+
+        <app-recapitulatif
+            *ngIf="isValid == true" 
+            [name]="this.profileForme.get('name')?.value"  
+            [firstName]="this.profileForme.get('firstName')?.value"
+            [adress]="this.profileForme.get('adress')?.value"
+            [cp]="this.profileForme.get('cp')?.value"
+            [city]="this.profileForme.get('city')?.value"
+            [country]="this.profileForme.get('country')?.value"
+            [email]="this.profileForme.get('email')?.value"
+            [phone]="this.profileForme.get('phone')?.value"
+            [civility]="this.profileForme.get('civility')?.value"
+            [login]="this.profileForme.get('login')?.value"
+            [password]="this.profileForme.get('password')?.value"  
+        ></app-recapitulatif>
+
+        
+    </form>
