@@ -1,6 +1,6 @@
 import { Component, Version } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Produit } from './model/produit';
+import { Produit } from '../../shared/model/produit';
 import { MyserviceService } from './myservice.service';
 
 @Component({

@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Select } from '@ngxs/store';
+import { Observable } from 'rxjs';
+import { PanierState } from 'shared/state/produit.state';
+
 
 @Component({
   selector: 'app-tetiere',
@@ -8,6 +12,8 @@ import { Component, OnInit } from '@angular/core';
 export class TetiereComponent implements OnInit {
 
   constructor() { }
+
+  @Select(PanierState.countProduits) countProduits$ : Observable<number>;
 
   ngOnInit(): void {
   }

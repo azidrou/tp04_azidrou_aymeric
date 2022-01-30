@@ -16,6 +16,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ActivatedRoute, RouterModule, Routes } from '@angular/router';
 import { TotemComponent } from './totem/totem.component';
 import { NgxsModule } from '@ngxs/store';
+import { PanierState } from 'shared/state/produit.state';
 
 
 @NgModule({
@@ -37,13 +38,14 @@ import { NgxsModule } from '@ngxs/store';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    NgxsModule.forRoot(),
+    NgxsModule.forRoot([PanierState]),
     //RouterModule.forRoot([ {path: 'myroute0', component: SaisieClientComponent}, { path: 'myroute', component: CatalogueComponent }])
     RouterModule.forRoot([
     {path: 'myroute0', component: SaisieClientComponent}, 
     {path: 'myroute', component: CatalogueComponent }, 
-    {path: 'mylazyroute0', loadChildren: () => import('./client/client.module').then(m => m.ClientModule) }, 
-    {path: '**', redirectTo: 'myroute0', pathMatch: 'full'}])
+    {path: 'mylazyrouteClient', loadChildren: () => import('./client/client.module').then(m => m.ClientModule) },
+    {path: 'mylazyroutePanier', loadChildren: () => import('./panier/panier.module').then(m => m.PanierModule) }, 
+    {path: '**', redirectTo: 'mylazyroute0', pathMatch: 'full'}])
   
   ],
   providers: [],

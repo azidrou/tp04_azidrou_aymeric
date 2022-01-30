@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { MyserviceService } from '../myservice.service';
 import { Observable } from 'rxjs';
-import { Produit } from '../model/produit';
+import { Produit } from '../../../shared/model/produit';
 import { map, filter } from 'rxjs/operators';
-
+import { Select, Selector, Store } from '@ngxs/store';
+import { PanierState } from 'shared/state/produit.state';
+import { AddPanier, SubPanier } from 'shared/action/produit.action';
 
 @Component({
   selector: 'app-catalogue',
@@ -12,15 +14,27 @@ import { map, filter } from 'rxjs/operators';
 })
 export class CatalogueComponent implements OnInit {
 
-  constructor(private service1: MyserviceService) { }
+  constructor(private service1: MyserviceService, private store: Store) { 
+    //this.countProduits$ = this.store.select(PanierState.countProduits);
+  }
 
   count: number = 0;
   funLevel: string ="Zéro fun";
   obsCatalogue: Observable<Produit[]> = new Observable;
   recherche: string='';
+  //countProduits$ : Observable<number>;
 
-
-
+  @Select(PanierState.countProduits) countProduits$ : Observable<number>;
+  AddToBasket(p: Produit):void{
+      this.store.dispatch(new AddPanier(p));
+      //console.log('test');
+  }
+  /*
+  SubToBasket(p: Produit){
+    return this.store.dispatch(new SubPanier(p));
+  }
+  */
+  
   valuechange(event : any){
     if(Number(this.recherche)){
     this.obsCatalogue = this.service1.getCatalogue()
