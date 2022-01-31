@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { MyserviceService } from '../myservice.service';
+import { MyserviceService } from '../../myservice.service';
 import { Observable } from 'rxjs';
-import { Produit } from '../../../shared/model/produit';
+import { Produit } from '../../../../shared/model/produit';
 import { map, filter } from 'rxjs/operators';
 import { Select, Selector, Store } from '@ngxs/store';
 import { PanierState } from 'shared/state/produit.state';

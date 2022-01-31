@@ -11,11 +11,11 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let c of obsCatalogue | async">
+      <tr *ngFor="let c of obsCatalogue | async; let index = index">
         <td>{{c.libelle}}</td>
         <td>{{c.prix}} €</td>
         <button (click)='AddToBasket(c)'> Ajouter </button>
-        <!-- <button [routerLink]="['/catalogue', index]" >Détails</button> -->
+        <button [routerLink]="['/catalogue', index]" >Détails</button>
       </tr>
     </tbody>
     </table>

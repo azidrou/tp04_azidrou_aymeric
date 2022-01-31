@@ -4,18 +4,19 @@ import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 import { ActivatedRoute, RouterModule, Routes } from '@angular/router';
 import { SaisieClientComponent } from '../saisie-client/saisie-client.component';
-import { CatalogueComponent } from '../catalogue/catalogue.component';
-import { AccueilComponent } from './accueil/accueil.component';
+import { AccueilComponent } from '../accueil/accueil.component';
+import { RecapitulatifComponent } from './recapitulatif/recapitulatif.component';
+import { AdresseComponent } from './adresse/adresse.component';
+
 
 @NgModule({
   declarations: [
     SignupComponent,
-    LoginComponent,
-    AccueilComponent
+    LoginComponent
   ],
   imports: [
     CommonModule,
-    RouterModule.forChild([ {path: 'accueilroute', component: AccueilComponent},{path: 'loginroute', component: LoginComponent}, { path: 'signuproute', component: SignupComponent}])
+    RouterModule.forChild([ {path: 'formulaireroute', component: AdresseComponent}, {path: 'loginroute', component: LoginComponent}, { path: 'signuproute', component: SignupComponent}])
   ]
 })
 export class ClientModule { }

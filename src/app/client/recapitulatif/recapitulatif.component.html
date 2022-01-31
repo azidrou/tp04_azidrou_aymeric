@@ -4,10 +4,22 @@
     <li>Nom - {{name}}</li>
     <li>Prenom - {{firstName}}</li>
     <li>Civilité - {{civility}}</li>
+    <!--
     <li>Adresse - {{adress}}</li>
     <li>Code postal - {{cp}}</li>
     <li>Ville - {{city}}</li>
     <li>Pays - {{country}}</li>
+    -->
+    <ul *ngFor="let a of getAdresse$ | async">
+        <hr>
+        <li>Adresse: {{a.adress}}</li>
+        <li>Ville : {{a.city}}</li>
+        <li>Code postal : {{a.cp}}</li>
+        <li>Pays : {{a.country}}</li>       
+        <button (click)="subToAdresse(a)">Supprimer</button>
+        <br>
+    </ul>
+
     <li>Télephone - {{phone | phoneNumber}} </li>
     <li>Mél -  {{email}}</li>
     <li>Utilisateur - {{login}}</li>
