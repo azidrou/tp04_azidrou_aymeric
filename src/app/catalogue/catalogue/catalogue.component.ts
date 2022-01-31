@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { MyserviceService } from '../../myservice.service';
 import { Observable } from 'rxjs';
-import { Produit } from '../../../../shared/model/produit';
-import { map, filter } from 'rxjs/operators';
-import { Select, Selector, Store } from '@ngxs/store';
+import { Produit } from 'shared/model/produit';
+import { map } from 'rxjs/operators';
+import { Select, Store } from '@ngxs/store';
 import { PanierState } from 'shared/state/produit.state';
-import { AddPanier, SubPanier } from 'shared/action/produit.action';
+import { AddPanier } from 'shared/action/produit.action';
 
 @Component({
   selector: 'app-catalogue',
@@ -22,7 +22,6 @@ export class CatalogueComponent implements OnInit {
   funLevel: string ="Zéro fun";
   obsCatalogue: Observable<Produit[]> = new Observable;
   recherche: string='';
-  //countProduits$ : Observable<number>;
 
   @Select(PanierState.countProduits) countProduits$ : Observable<number>;
   AddToBasket(p: Produit):void{

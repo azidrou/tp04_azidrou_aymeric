@@ -19,6 +19,7 @@ import { PanierState } from 'shared/state/produit.state';
 import { AdresseState } from 'shared/state/adresse.state';
 import { AccueilComponent } from './accueil/accueil.component';
 import { CatalogueComponent } from './catalogue/catalogue/catalogue.component';
+import { DescriptionComponent } from './description/description/description.component';
 
 
 @NgModule({
@@ -41,7 +42,6 @@ import { CatalogueComponent } from './catalogue/catalogue/catalogue.component';
     ReactiveFormsModule,
     HttpClientModule,
     NgxsModule.forRoot([PanierState, AdresseState]), // NE PAS OUBLIER CETTE LIGNE
-    //RouterModule.forRoot([ {path: 'myroute0', component: SaisieClientComponent}, { path: 'myroute', component: CatalogueComponent }])
     RouterModule.forRoot([
     {path: 'mydefaultroute', component: AccueilComponent}, 
     {path: 'myroute0', component: SaisieClientComponent}, 
@@ -50,6 +50,7 @@ import { CatalogueComponent } from './catalogue/catalogue/catalogue.component';
     {path: 'mylazyroutePanier', loadChildren: () => import('./panier/panier.module').then(m => m.PanierModule) }, 
     {path: 'mylazyrouteCatalogue', loadChildren: () => import('./catalogue/catalogue.module').then(m => m.CatalogueModule) }, 
     {path: 'mylazyrouteDescription', loadChildren: () => import('./description/description.module').then(m => m.DescriptionModule) },
+    {path: 'catalogue/:id', component: DescriptionComponent},
     {path: '**', redirectTo: 'mydefaultroute', pathMatch: 'full'}])
   
   ],

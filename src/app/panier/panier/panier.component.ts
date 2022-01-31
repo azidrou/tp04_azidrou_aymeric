@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Store, State, Select } from '@ngxs/store';
+import { Store, Select } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { SubPanier } from 'shared/action/produit.action';
 import {Produit} from 'shared/model/produit';

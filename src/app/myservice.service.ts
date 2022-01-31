@@ -17,6 +17,7 @@ export class MyserviceService {
       .get<Produit[]>(environment.baseUrl)
       .pipe(tap((v) => console.log(v)));
   }
+  
   /*
   public getCatalogue() : Observable<Array<{ title: string, price: number }>> {
     return of([
