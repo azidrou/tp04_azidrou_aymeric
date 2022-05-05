@@ -1,0 +1,9 @@
+table {border-style: ridge;  border-width: 3px; border-color: #8ebf42; background-color: #d9d9d9; margin-top:1em;}
+th  {border:1px solid #095484;}   
+td {border:2px groove #1c87c9; column-width:500em;}
+
+#funButton{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-top: 200px;
+}
