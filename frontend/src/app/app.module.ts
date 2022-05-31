@@ -36,9 +36,7 @@ import { SignupComponent } from './client/signup/signup.component';
     PhoneNumberPipe,
     CatalogueComponent,
     TotemComponent,
-    AccueilComponent,
-    LoginComponent,
-    SignupComponent
+    AccueilComponent
 
   ],
   imports: [
