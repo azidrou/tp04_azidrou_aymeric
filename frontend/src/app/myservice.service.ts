@@ -14,7 +14,7 @@ export class MyserviceService {
   count: number = 0;
   public getCatalogue() : Observable<Produit[]> {
     return this.httpClient
-      .get<Produit[]>(environment.baseUrl)
+      .get<Produit[]>(environment.catalog)
       .pipe(tap((v) => console.log(v)));
   }
   

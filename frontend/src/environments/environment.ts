@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   //baseUrl: '/assets/mock/bouchon.json',
-  catalog: '/api/catalog',
+  catalog: '/api/catalog.json',
   name: 'default',
 };
 
