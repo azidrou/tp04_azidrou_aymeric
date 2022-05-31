@@ -34,6 +34,7 @@ import { DescriptionComponent } from './description/description/description.comp
     PhoneNumberPipe,
     CatalogueComponent,
     TotemComponent,
+    AccueilComponent
 
   ],
   imports: [
