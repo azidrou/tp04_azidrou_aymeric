@@ -20,6 +20,8 @@ import { AdresseState } from 'shared/state/adresse.state';
 import { AccueilComponent } from './accueil/accueil.component';
 import { CatalogueComponent } from './catalogue/catalogue/catalogue.component';
 import { DescriptionComponent } from './description/description/description.component';
+import { LoginComponent } from './client/login/login.component';
+import { SignupComponent } from './client/signup/signup.component';
 
 
 @NgModule({
@@ -34,7 +36,9 @@ import { DescriptionComponent } from './description/description/description.comp
     PhoneNumberPipe,
     CatalogueComponent,
     TotemComponent,
-    AccueilComponent
+    AccueilComponent,
+    LoginComponent,
+    SignupComponent
 
   ],
   imports: [
@@ -45,6 +49,7 @@ import { DescriptionComponent } from './description/description/description.comp
     NgxsModule.forRoot([PanierState, AdresseState]), // NE PAS OUBLIER CETTE LIGNE
     RouterModule.forRoot([
     {path: 'mydefaultroute', component: AccueilComponent}, 
+    {path: 'accueilroute', component: AccueilComponent}, 
     {path: 'myroute0', component: SaisieClientComponent}, 
     {path: 'myroute', component: CatalogueComponent }, 
     {path: 'mylazyrouteClient', loadChildren: () => import('./client/client.module').then(m => m.ClientModule) },

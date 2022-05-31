@@ -8,10 +8,10 @@
   <div id="formContent">
     <!-- Tabs Titles -->
 
-    <!-- Icon -->
+    <!-- Icon --><!--
     <div class="fadeIn first">
       <img src="http://danielzawadzki.com/codepen/01/icon.svg" id="icon" alt="User Icon" />
-    </div>
+    </div>-->
 
     <!-- Login Form -->
     <form>
@@ -19,6 +19,7 @@
       <input type="text" id="password" class="fadeIn third" name="login" placeholder="password">
       <input type="submit" class="fadeIn fourth" value="Log In">
     </form>
+    
 
     <!-- Remind Passowrd --><!--
     <div id="formFooter">
@@ -27,3 +28,8 @@
 
   </div>
 </div>
+<br>
+<a [routerLink] = "['accueilroute']" > Route : accueil</a>
+<br>
+<a [routerLink] = "['/mylazyrouteClient/signuproute']" > Lazy route : s'inscrire</a>
+<br>
