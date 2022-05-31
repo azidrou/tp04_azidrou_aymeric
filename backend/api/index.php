@@ -45,7 +45,7 @@ $options = [
     "error" => function ($response, $arguments) {
         $data = array('ERREUR' => 'Connexion', 'ERREUR' => 'JWT Non valide');
         $response = $response->withStatus(401);
-        return $response->withHeader("Content-Type", "application/json")->getBody()->write(json_encode($data));
+        return $response->withHeader("Content-Type", "application/json")->getBody()->write($data);
     }
 ];
 
@@ -54,7 +54,7 @@ $app->add(new Tuupola\Middleware\JwtAuthentication($options));
 
 $app->get('/api/hello/{name}',
     function (Request $request, Response $response, $args) {
-        $response->getBody()->write(json_encode(array('nom' => $args['name'])));
+        $response->getBody()->write(array('nom' => $args['name']));
         return $response;
     });
 
@@ -77,7 +77,7 @@ $app->post('/api/login',
         if(!$err){
             $response = createJWT($response);
             $data = ['nom'=> 'toto', 'prenom'=> 'titi'];
-            $response->getBody()->write(json_encode($data));
+            $response->getBody()->write($data);
         }else{
             $response = $response->withStatus(401);
         }
@@ -91,33 +91,33 @@ $app->get('/api/user',
         $response->getBody()->write($userid);
         return $response;
     });
-/*
+
 $app->get('/api/catalog',
     function(Request $request, Response $response) {
-        $products = file_get_contents("../bouchon/products.json");
+        $products = file_get_contents("../bouchon/catalogue.json");
 
         if($products) {
-            $response->getBody()->write(json_encode($products));
+            $response->getBody()->write($products);  //write(json_encode($products)) bug car on a déjà du json !
         } else {
             $response->withStatus(404);
         }
 
         return $response;
     });
-
+/*
 $app->get('/api/catalog/{filter}',
     function(Request $request, Response $response, $args) {
-        $products = file_get_contents("../bouchon/products.json");
+        $products = file_get_contents("../bouchon/catalogue.json");
 
         // s'il n'y a pas d'erreur dans la récupération du bouchon
         if($products) {
 
             $filterValue = (string)$args['filter'];
-            array_filter(json_encode($products, true), function($value) use ($filterValue) {
+            array_filter($products, function($value) use ($filterValue) {
                 // si le filtre est similaire à plus de 50% au titre du produit alors on le garde
                 return similar_text((string)$value['titre'], $filterValue) > 50;
             })
-            $response->getBody()->write(json_encode($products));
+            $response->getBody()->write($products);
         } else {
             $response->withStatus(404);
         }
