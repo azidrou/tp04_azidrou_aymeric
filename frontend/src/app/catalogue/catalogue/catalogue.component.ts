@@ -50,7 +50,7 @@ export class CatalogueComponent implements OnInit {
         map(
           produit => 
             produit.filter(
-              produit => produit.libelle.startsWith(this.recherche))
+              produit => produit.adressePropriete.startsWith(this.recherche))
         ))
     }
   }

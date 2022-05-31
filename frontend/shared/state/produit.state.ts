@@ -34,9 +34,9 @@ export class PanierState {
                 produits: [...state.produits, payload]
         });
         */
-            if(state.produits.find(elem => elem.libelle == payload.libelle)){
+            if(state.produits.find(elem => elem.adressePropriete == payload.adressePropriete)){
                 patchState({ 
-                    produits: state.produits.map((p : Produit) => p.libelle !== payload.libelle ? p : {...p, qteCommande : p.qteCommande+1})
+                    produits: state.produits.map((p : Produit) => p.adressePropriete !== payload.adressePropriete ? p : {...p, qteCommande : p.qteCommande+1})
 
                 })  
                 //console.log("+1");
@@ -57,20 +57,20 @@ export class PanierState {
         { payload }: SubPanier) {
             const state = getState();
             //console.log('state');
-            if(state.produits.find(elem => elem.libelle == payload.libelle)?.qteCommande > 1){
+            if(state.produits.find(elem => elem.adressePropriete == payload.adressePropriete)?.qteCommande > 1){
                 patchState({
-                    produits: state.produits.map((p : Produit) => p.libelle !== payload.libelle ? p : {...p, qteCommande : p.qteCommande -1})
+                    produits: state.produits.map((p : Produit) => p.adressePropriete !== payload.adressePropriete ? p : {...p, qteCommande : p.qteCommande -1})
                 })
             }
             else{
                 patchState({
-                    produits: state.produits.filter(produit => produit.libelle !== payload.libelle)
+                    produits: state.produits.filter(produit => produit.adressePropriete !== payload.adressePropriete)
                 })
             }
 
             /*
             patchState({
-                produits: state.produits.filter(produit => produit.libelle !== payload.libelle)
+                produits: state.produits.filter(produit => produit.adressePropriete !== payload.adressePropriete)
             })
             */
     }

@@ -1,7 +1,7 @@
 <p>panier works!</p>
 <ul>
     <li *ngFor="let p of produits$ | async">
-        {{p.libelle}} à {{p.prix}}€ | {{p.qteCommande}} article(s) | sous-total : {{p.prix * p.qteCommande}}€
+        {{p.adressePropriete}} à {{p.prix}}€ | {{p.qteCommande}} article(s) | sous-total : {{p.prix * p.qteCommande}}€
         <button (click)="SubToBasket(p)" >Enlever article</button>
     </li>
 </ul>

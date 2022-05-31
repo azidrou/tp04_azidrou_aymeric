@@ -12,7 +12,7 @@
     </thead>
     <tbody>
       <tr *ngFor="let c of obsCatalogue | async; let index = index">
-        <td>{{c.libelle}}</td>
+        <td>{{c.adressePropriete}}</td>
         <td>{{c.prix}} €</td>
         <button (click)='AddToBasket(c)'> Ajouter </button>
         <button [routerLink]="['/catalogue', index]" >Détails</button>
