@@ -24,7 +24,43 @@ Client:
             length: 30
             options:
                 fixed: false
-        login:
+        civilite:
+            type: string
+            nullable: true
+            length: 30
+            options:
+                fixed: false
+        adresse:
+            type: string
+            nullable: true
+            length: 200
+            options:
+                fixed: false
+        cp:
+            type: string
+            nullable: true
+            length: 10
+            options:
+                fixed: false
+        ville:
+            type: string
+            nullable: true
+            length: 100
+            options:
+                fixed: false
+        pays:
+            type: string
+            nullable: true
+            length: 100
+            options:
+                fixed: false
+        telephone:
+            type: string
+            nullable: true
+            length: 20
+            options:
+                fixed: false
+        username:
             type: string
             nullable: true
             length: 30
@@ -34,6 +70,12 @@ Client:
             type: string
             nullable: true
             length: 256
+            options:
+                fixed: false
+        email:
+            type: string
+            nullable: true
+            length: 100
             options:
                 fixed: false
     lifecycleCallbacks: {  }

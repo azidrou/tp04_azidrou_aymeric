@@ -11,13 +11,16 @@
                     <div>
                         <input type="text" name="login" value="" class="form-control input-lg" placeholder="Nom d'utilisateur"  />                        
                     </div>
+                    <!--<div *ngIf = "!registerException1.test(login)">Nom d'utilisateur non valide</div>-->
                     <div class="row">
                         <div class="col-xs-6 col-md-6">
                             <input type="text" name="password" value="" class="form-control input-lg" placeholder="Mot de passe"  />                        
                         </div>
+                        <!--<div *ngIf = "!registerException2.test(password)">Mot de passe non valide</div>-->
                         <div class="col-xs-6 col-md-6">
                             <input type="text" name="confirm_password" value="" class="form-control input-lg" placeholder="Confirmation"  />                        
                         </div>
+                        <!--<div *ngIf = "!registerException3.test(confirm_password)">Mots de passe différents !</div>-->
                     </div>
                     <button class="btn btn-lg btn-primary btn-block signup-btn" type="submit">Create my account</button>
             </form>          

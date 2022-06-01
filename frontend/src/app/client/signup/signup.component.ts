@@ -12,4 +12,8 @@ export class SignupComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  registerException1 = /[A-Za-z]{2,40}/;
+  registerException2 = /[A-Za-z0-9]{2,40}/;
+  //registerException3 = 
+
 }

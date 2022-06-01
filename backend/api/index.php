@@ -126,4 +126,5 @@ $app->get('/api/catalog/{filter}',
         return $response;
     });
 */
+
 $app->run();

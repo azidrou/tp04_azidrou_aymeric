@@ -9,5 +9,5 @@ import { MyserviceService } from './myservice.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'tp04';
+  title = 'tp07';
 }
