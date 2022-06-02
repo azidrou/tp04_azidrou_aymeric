@@ -37,19 +37,25 @@ export class MyserviceService {
       { name: 'marc', firstName: 'freyeux'},
     ];
   }
-  
 
-  public postClient(login : string, password : string): any {
+  public postClient(firstName : string, name : string, adress : string, cp : number, city : string, country : string, phone : number, email : string, civility : string, login : string, password : string): Observable<any>  {
+    const httpOptions = {
+      headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'})
+    };
+    console.log("PostClient from service");
+    return this.httpClient
+      .post<any>(environment.signup,{firstName, name, adress, cp, city, country, phone, email, civility, login, password},httpOptions)
+      //.pipe(tap((v) => console.log(v)));  
+  }
+
+  public postLogin(login : string, password : string): Observable<any> {
     const httpOptions = {
       headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'})
     };
     
     return this.httpClient
-      .post<any>(environment.signup,{login, password},httpOptions)
-      .pipe(tap((v) => console.log(v)));  
-  }
-  public postLogin(): any {
-    
+      .post<any>(environment.login,{login, password},httpOptions)
+      //.pipe(tap((v) => console.log(v)));  
   }
 
   public getCount(): number {

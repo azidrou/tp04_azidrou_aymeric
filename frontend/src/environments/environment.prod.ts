@@ -3,5 +3,6 @@ export const environment = {
   catalog: '/bouchon/catalogue.json',
   //catalog: '/api/catalogue',
   signup: '/api/signup',
+  login: '/api/login',
   production: true
 };

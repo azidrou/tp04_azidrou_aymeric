@@ -9,7 +9,7 @@ import { MyserviceService } from '../../myservice.service';
 })
 export class SignupComponent implements OnInit {
 
-  constructor(private service1: MyserviceService,) { }
+  constructor(private service1: MyserviceService) { }
 
   ngOnInit(): void {
   }
@@ -38,9 +38,8 @@ export class SignupComponent implements OnInit {
     console.log("postClient1 isValid : ", this.isValid);
     if(this.isValid)
     {
-      this.service1.postClient(this.signupForm.value.login, this.signupForm.value.password).subscribe();
+      this.service1.postClient(this.signupForm.value.firstName, this.signupForm.value.name, this.signupForm.value.adress, this.signupForm.value.cp, this.signupForm.value.city, this.signupForm.value.country, this.signupForm.value.phone, this.signupForm.value.email, this.signupForm.value.civility, this.signupForm.value.login, this.signupForm.value.password).subscribe();
       console.log("postClient2 isValid : ", this.isValid);
     }
   }
-
 }

@@ -120,7 +120,7 @@ $app->post('/api/signup',
             $newClient->$password = $data['password'];
             
             $newClient->$nom = $data['name'];
-            $newClient->$prenom = $data['firstname'];
+            $newClient->$prenom = $data['firstName'];
             $newClient->$telephone = $data['phone'];
             $newClient->$civilite = $data['civility'];
             $newClient->$adresse = $data['adress'];
