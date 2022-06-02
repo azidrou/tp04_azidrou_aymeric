@@ -37,7 +37,7 @@ export class MyserviceService {
   }
   public postClient(): any {
     return this.httpClient
-      .get<Produit[]>(environment.catalog)
+      .post<any>(environment.signup)
       .pipe(tap((v) => console.log(v)));  
   }
   public postLogin(): any {
