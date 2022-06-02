@@ -8,20 +8,69 @@
 	<div class="row">
         <div class="col-md-6 col-md-offset-3">
             <form action="r" method="post" accept-charset="utf-8" class="form" role="form">   <legend>Sign Up</legend>
-                    <div>
-                        <input type="text" name="login" value="" class="form-control input-lg" placeholder="Nom d'utilisateur"  />                        
-                    </div>
-                    <!--<div *ngIf = "!registerException1.test(login)">Nom d'utilisateur non valide</div>-->
-                    <div class="row">
-                        <div class="col-xs-6 col-md-6">
-                            <input type="text" name="password" value="" class="form-control input-lg" placeholder="Mot de passe"  />                        
+                        <div class="col-xs-6 col-md-6"> 
+                            <label for="firstName">Prénom</label>
+                            <input type="text" formControlName="firstName" name="firstName"  placeholder="François" autofocus required />
                         </div>
-                        <!--<div *ngIf = "!registerException2.test(password)">Mot de passe non valide</div>-->
+                
                         <div class="col-xs-6 col-md-6">
-                            <input type="text" name="confirm_password" value="" class="form-control input-lg" placeholder="Confirmation"  />                        
+                            <label for="name">Nom</label>
+                            <input type="text" formControlName="name" name="name" placeholder="Dupond" required />
                         </div>
-                        <!--<div *ngIf = "!registerException3.test(confirm_password)">Mots de passe différents !</div>-->
-                    </div>
+                        
+                        <hr>
+                        <div class="col-xs-6 col-md-6">
+                            <label for="adress">Adresse</label>
+                            <input type="text" formControlName="adress" name="adress" placeholder="25 rue principale" required />
+                        </div>
+                
+                        <div class="col-xs-6 col-md-6">
+                            <label for="city">Ville</label>
+                            <input type="text" formControlName="city" name="city" placeholder="Colmar" required />
+                        </div>
+                
+                        
+                        <div class="col-xs-6 col-md-6">
+                            <label for="cp">Code postal</label>
+                            <input type="text" formControlName="cp" name="cp" placeholder="68000" pattern="[0-9]{5}" appVerificationFormulaire required />
+                
+                        </div>
+                
+                        <div class="col-xs-6 col-md-6">
+                            <label for="country">Pays</label>
+                            <input type="text" formControlName="country" name="country" placeholder="France" required />
+                        </div>                
+                        
+                        <div class="col-xs-6 col-md-6">
+                            <label for="phone">Téléphone</label>
+                            <input type="phone" formControlName="phone" name="phone" placeholder="06XXXXXXXX" pattern="[0-9]{10}" appVerificationFormulaire />
+                        </div>
+                
+                        <div class="col-xs-6 col-md-6">
+                            <label for="email">Email</label>
+                            <input type="email" formControlName="email" name="email" placeholder="name@example.com" appVerificationFormulaire required />
+                        </div>
+                
+                        <div class="col-xs-6 col-md-6">
+                            <label for="civility">Civilité</label>
+                            <input type="text" formControlName="civility" name="civility" placeholder="MR,MME,..." required />
+                        </div>
+                
+                        <div class="col-xs-6 col-md-6">
+                            <label for="login">Login</label>
+                            <input type="text" formControlName="login" name="login" placeholder="troglo"  required />
+                        </div>
+                
+                        <div class="col-xs-6 col-md-6">
+                            <label for="password">Mot de passe</label>
+                            <input type="password" formControlName="password" name="password" placeholder="Mot de passe" required />
+                        </div>
+                
+                        <div class="col-xs-6 col-md-6">
+                            <label for="confirmpassword">Mot de passe</label>
+                            <input type="confirmpassword" id="confirmpassword" name="confirmpassword" placeholder="Confirmez le mot de passe" required />
+                        </div> 
+
                     <button class="btn btn-lg btn-primary btn-block signup-btn" type="submit">Create my account</button>
             </form>          
         </div>

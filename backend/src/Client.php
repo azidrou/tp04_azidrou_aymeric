@@ -21,7 +21,7 @@ class Client
      * @ORM\SequenceGenerator(sequenceName="client_id_client_seq", allocationSize=1, initialValue=1)
      */
     private $idClient;
-
+    
     /**
      * @var string|null
      *
@@ -69,7 +69,6 @@ class Client
      *
      * @ORM\Column(name="pays", type="string", length=100, nullable=true)
      */
-    private $pays;
 
     /**
      * @var string|null

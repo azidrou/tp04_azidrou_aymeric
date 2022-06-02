@@ -1,21 +1,21 @@
 <?php
-
 use Tuupola\Middleware\HttpBasicAuthentication;
 use \Firebase\JWT\JWT;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Factory\AppFactory;
 
+require __DIR__ . '/../boostrap.php';
 require __DIR__ . '/../vendor/autoload.php';
 
-function createJwt(Response $response): Response
+function createJwt(Client $client,Response $response): Response
 {
     $issuedAt = time();
     $expirationTime = $issuedAt + 600;
     $payload = array(
-        'userid' => 'toto',
-        'email' => 'toto@gmail.com',
-        'pseudo' => 'totoPseudo',
+        'id' => $client->getIdClient(),
+        'username' => $client->getUsername(),
+        'email' => $client->getEmail(),
         'iat' => $issuedAt,
         'exp' => $expirationTime
     );
@@ -32,7 +32,7 @@ function getJWTToken($request)
 }
 
 
-const JWT_SECRET = "makey1234567";
+const JWT_SECRET = "mykey1234567";
 $options = [
     "attribute" => "token",
     "header" => "Authorization",
@@ -57,7 +57,7 @@ $app->get('/api/hello/{name}',
         $response->getBody()->write(array('nom' => $args['name']));
         return $response;
     });
-
+/*
 $app->post('/api/login',
     function (Request $request, Response $response) {
         $err = false;
@@ -83,6 +83,64 @@ $app->post('/api/login',
         }
         return $response;
     });
+*/
+
+$app->post('/api/login',
+    function (Request $request, Response $response) {
+        global $entityManager;
+        $body = $request->getBody();
+        $data = json_decode($body, true);
+
+        if(isset($data['username'], $data['password'])) {
+            $clientRepository = $entityManager->getRepository(Client::class);
+            $client = $clientRepository->findOneBy(array('username' => $data['username'], 'password' => $data['password']));
+            if($client){
+                $response = createJWT($client, $response);
+            }else{
+                $response = $response->withStatus(401);
+            }
+        } else {
+            $response = $response->withStatus(400);
+        }
+
+        return $response;
+        
+    });
+
+$app->post('/api/signup',
+    function (Request $request, Response $response) {
+        global $entityManager;
+        $body = $request->getBody();
+        $data = json_decode($body, true);
+
+        if($data) 
+        {
+            $newClient = new Client();
+            $newClient->$username = $data['login'];
+            $newClient->$password = $data['password'];
+            
+            $newClient->$nom = $data['name'];
+            $newClient->$prenom = $data['firstname'];
+            $newClient->$telephone = $data['phone'];
+            $newClient->$civilite = $data['civility'];
+            $newClient->$adresse = $data['adress'];
+            $newClient->$cp = $data['cp'];
+            $newClient->$ville = $data['city'];
+            $newClient->$pays = $data['country'];
+            $newClient->$email = $data['email'];
+            
+            if($client){
+                $response = createJWT($client, $response);
+                $entityManager->persist($client);
+                $entityManager->flush();
+            }else{$response = $response->withStatus(401);}
+        } else {$response = $response->withStatus(400);}
+
+        return $response;
+        
+    });
+   
+    
 
 $app->get('/api/user',
     function (Request $request, Response $response) {
@@ -92,12 +150,40 @@ $app->get('/api/user',
         return $response;
     });
 
-$app->get('/api/catalog',
+/* //méthode avec le bouchon 
+$app->get('/api/catalogue',
     function(Request $request, Response $response) {
-        $products = file_get_contents("../bouchon/catalogue.json");
-
+        $products = file_get_contents("../bouchon/catalogue.json");    
         if($products) {
-            $response->getBody()->write($products);  //write(json_encode($products)) bug car on a déjà du json !
+            $response->getBody()->write($products);  //write(json_encode($products)) bug avec bouchon car on a déjà du json !
+        } else {
+            $response->withStatus(404);
+        }
+
+        return $response;
+    });
+*/
+
+$app->get('/api/catalogue',
+    function(Request $request, Response $response) {
+        global $entityManager; //a rajouter à chaque fct
+        $ProduitRepository = $entityManager->getRepository(Produit::class); //on récup le repo pr interagir avec la bdd
+        $products = $ProduitRepository->findAll(); //on obtient un tableau d'objet, il faut restructurer pr s'en servir dans l'api
+        
+        if($products) {
+            //on restructure
+            $rawDataFromBDD = [];
+            foreach($products as $product)
+            {
+                $rawDataFromBDD[] = 
+                [
+                    "adressePropriete" => $product->getAdressepropriete(),
+                    "prix" => $product->getPrix(),
+                    "description" => $product->getDescription()
+                ];
+            }
+
+            $response->getBody()->write(json_encode($rawDataFromBDD));  
         } else {
             $response->withStatus(404);
         }
@@ -105,7 +191,7 @@ $app->get('/api/catalog',
         return $response;
     });
 /*
-$app->get('/api/catalog/{filter}',
+$app->get('/api/catalogue/{filter}',
     function(Request $request, Response $response, $args) {
         $products = file_get_contents("../bouchon/catalogue.json");
 
@@ -125,6 +211,8 @@ $app->get('/api/catalog/{filter}',
 
         return $response;
     });
+
+    select()
 */
 
 $app->run();
