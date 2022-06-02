@@ -37,9 +37,11 @@ export class SignupComponent implements OnInit {
   isValid:boolean=false;
   submitForm(){
     this.isValid = this.signupForm.valid;
+    console.log("postClient1 isValid : ", this.isValid);
     if(this.isValid)
     {
       this.service1.postClient(this.signupForm.value.login, this.signupForm.value.password);
+      console.log("postClient2 isValid : ", this.isValid);
     }
   }
 
