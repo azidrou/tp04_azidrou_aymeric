@@ -7,7 +7,8 @@
 <div class="container" id="wrap">
 	<div class="row">
         <div class="col-md-6 col-md-offset-3">
-            <form (ngSubmit)="submitForm()" method="post" accept-charset="utf-8" [formGroup]="signupForm" class="form" role="form">   <legend>Sign Up</legend>
+            <!--<form (ngSubmit)="submitForm()" [formGroup]="signupForm" method="post" accept-charset="utf-8">   <legend>Sign Up</legend> -->
+            <form (ngSubmit)="submitForm()" [formGroup]="signupForm" method="post" >
                         <div class="col-xs-6 col-md-6"> 
                             <label for="firstName">Prénom</label>
                             <input type="text" formControlName="firstName" name="firstName"  placeholder="François" autofocus required />

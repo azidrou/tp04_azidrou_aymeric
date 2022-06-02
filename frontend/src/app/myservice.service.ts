@@ -11,9 +11,7 @@ export class MyserviceService {
 
   constructor(private httpClient: HttpClient) { }
 
-  const httpOptions = {
-    headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'})
-  };
+  
 
   count: number = 0;
   public getCatalogue() : Observable<Produit[]> {
@@ -42,8 +40,12 @@ export class MyserviceService {
   
 
   public postClient(login : string, password : string): any {
+    const httpOptions = {
+      headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'})
+    };
+    
     return this.httpClient
-      .post<any>(environment.signup,{login, password}, this.httpOptions)
+      .post<any>(environment.signup,{login, password},httpOptions)
       .pipe(tap((v) => console.log(v)));  
   }
   public postLogin(): any {

@@ -4,6 +4,7 @@ import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 import { RouterModule } from '@angular/router';
 import { AdresseComponent } from './adresse/adresse.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -13,6 +14,8 @@ import { AdresseComponent } from './adresse/adresse.component';
   ],
   imports: [
     CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
     RouterModule.forChild([ {path: 'formulaireroute', component: AdresseComponent}, {path: 'loginroute', component: LoginComponent}, { path: 'signuproute', component: SignupComponent}])
   ]
 })
