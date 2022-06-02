@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../environments/environment';
 import { of, tap, Observable } from 'rxjs';
 import { Produit } from '../../shared/model/produit';
@@ -10,6 +10,10 @@ import { Produit } from '../../shared/model/produit';
 export class MyserviceService {
 
   constructor(private httpClient: HttpClient) { }
+
+  const httpOptions = {
+    headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'})
+  };
 
   count: number = 0;
   public getCatalogue() : Observable<Produit[]> {
@@ -35,9 +39,11 @@ export class MyserviceService {
       { name: 'marc', firstName: 'freyeux'},
     ];
   }
-  public postClient(): any {
+  
+
+  public postClient(login : string, password : string): any {
     return this.httpClient
-      .post<any>(environment.signup)
+      .post<any>(environment.signup,{login, password}, this.httpOptions)
       .pipe(tap((v) => console.log(v)));  
   }
   public postLogin(): any {

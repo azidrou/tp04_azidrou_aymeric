@@ -39,7 +39,7 @@ export class SignupComponent implements OnInit {
     this.isValid = this.signupForm.valid;
     if(this.isValid)
     {
-      this.service1.postClient();
+      this.service1.postClient(this.signupForm.value.login, this.signupForm.value.password);
     }
   }
 
