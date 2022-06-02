@@ -45,7 +45,7 @@ $options = [
     "error" => function ($response, $arguments) {
         $data = array('ERREUR' => 'Connexion', 'ERREUR' => 'JWT Non valide');
         $response = $response->withStatus(401);
-        return $response->withHeader("Content-Type", "application/json")->getBody()->write($data);
+        return $response->withHeader("Content-Type", "application/json")->getBody()->write(json_encode($data));
     }
 ];
 
@@ -88,7 +88,7 @@ $app->post('/api/login',
 $app->post('/api/login',
     function (Request $request, Response $response) {
         global $entityManager;
-        $body = $request->getBody();
+        $body = $request->getParsedBody();
         $data = json_decode($body, true);
 
         if(isset($data['username'], $data['password'])) {
@@ -110,8 +110,9 @@ $app->post('/api/login',
 $app->post('/api/signup',
     function (Request $request, Response $response) {
         global $entityManager;
-        $body = $request->getBody();
-        $data = json_decode($body, true);
+        $body = $request->getParsedBody();
+        //$data = json_decode($body, true);
+        $data = $body;
 
         if($data) 
         {
